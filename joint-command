@@ -1,0 +1,1 @@
+kubeadm join 192.168.50.10:6443 --token f890se.ip87m7uoecb5ux21     --discovery-token-ca-cert-hash sha256:8ae80541022aa07da2310406783e8ec6a9c096b4ff1b2a15f5aba50dcf256ec0 
