@@ -100,27 +100,10 @@
      - cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
      - chown vagrant:vagrant /home/vagrant/.kube/config
 
-  - name: Download calico-etcd.yaml
-    get_url:
-      url: https://docs.projectcalico.org/manifests/calico-etcd.yaml
-      dest: /home/vagrant/calico-etcd.yaml
-      mode: 0755
-      group: vagrant
-      owner: vagrant
-      timeout: 20
-
-  - name: Replace etcd_endpoints with the real one
-    lineinfile:
-      path: /home/vagrant/calico-etcd.yaml
-      regexp: '^(.*)etcd_endpoints(.*)$'
-      line: '  etcd_endpoints: "http://192.168.50.10:2379"'
-      firstmatch: yes
-      backup: yes
-
   - name: Install calico pod network
     become: false
-#  command: kubectl create -f  https://docs.projectcalico.org/v3.4/getting-started/kubernetes/installation/hosted/calico.yaml
-    command: kubectl create -f /home/vagrant/calico-etcd.yaml
+ #   command: kubectl create -f  https://docs.projectcalico.org/v3.10/manifests/calico.yaml
+    command: kubectl create -f https://docs.projectcalico.org/manifests/calico.yaml
 
   - name: Generate join command
     command: kubeadm token create --print-join-command
