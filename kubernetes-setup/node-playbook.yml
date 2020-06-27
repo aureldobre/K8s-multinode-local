@@ -77,14 +77,16 @@
         - kubelet
         - kubeadm
 
-  - name: Show hostvars['k8s-master']
-    debug: var=hostvars['k8s-master']['join_command']
+  - name: Copy the join command to node
+    copy:
+      src: ./join-command
+      dest: $HOME/join-command
+      owner: vagrant
+      group: vagrant
+      mode: 0760
 
-  - name: join cluster
-    shell: "{{ hostvars['k8s-master'].join_command }} >> node_joined.txt"
-    args:
-      chdir: $HOME
-      creates: node_joined.txt
+  - name: Join the node to cluster
+    command: sh $HOME/join-command
 
   handlers:
     - name: docker status
