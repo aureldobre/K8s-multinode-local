@@ -102,23 +102,18 @@
 
   - name: Install calico pod network
     become: false
- #   command: kubectl create -f  https://docs.projectcalico.org/v3.10/manifests/calico.yaml
     command: kubectl create -f https://docs.projectcalico.org/manifests/calico.yaml
 
   - name: Generate join command
     command: kubeadm token create --print-join-command
     register: join_command
 
-  - name: set join command as ansible fact
-    set_fact:
-      join_command: "{{ join_command.stdout_lines[0] }}"
-
   - name: Show join_command
     debug: var=join_command
 
-  - name: Copy join command fact to node as local file
+  - name: Copy join command to the guest
     become: false
-    local_action: copy content="{{ join_command }}" dest="./join-command"
+    local_action: copy content="{{ join_command.stdout_lines[0] }}" dest="./join-command"
 
   handlers:
     - name: docker status
