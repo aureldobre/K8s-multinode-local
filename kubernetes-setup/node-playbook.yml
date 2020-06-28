@@ -77,7 +77,7 @@
         - kubelet
         - kubeadm
 
-  - name: Copy the join command to node
+  - name: Copy the join command to node from the guest
     copy:
       src: ./join-command
       dest: $HOME/join-command
@@ -85,7 +85,7 @@
       group: vagrant
       mode: 0760
 
-  - name: Join the node to cluster
+  - name: Join the node to the cluster
     command: sh $HOME/join-command
 
   handlers:
