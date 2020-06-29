@@ -77,7 +77,7 @@
         - kubelet
         - kubeadm
 
-  - name: Copy the join command to node from the guest
+  - name: Copy the join command to node from the host
     copy:
       src: ./join-command
       dest: $HOME/join-command
