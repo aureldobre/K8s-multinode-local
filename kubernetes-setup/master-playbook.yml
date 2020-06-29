@@ -111,7 +111,7 @@
   - name: Show join_command
     debug: var=join_command
 
-  - name: Copy join command to the guest
+  - name: Copy join command to the host
     become: false
     local_action: copy content="{{ join_command.stdout_lines[0] }}" dest="./join-command"
 
