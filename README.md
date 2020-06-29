@@ -31,7 +31,7 @@ The code was adapted from the article: (https://kubernetes.io/blog/2019/03/15/ku
 	vagrant halt
 
 ### Restart:
-  vagrant up
+  	vagrant up
   
 ### Remove:
 	vagrant destroy
