@@ -23,7 +23,7 @@ The code was adapted from the article: (https://kubernetes.io/blog/2019/03/15/ku
 
 ### Test it from host:
 	mkdir ~/.kube
-	sudo scp vagrant@192.168.50.10:/home/vagrant/.kube/config
+	sudo scp vagrant@192.168.50.10:/home/vagrant/.kube/config ~/.kube
 	sudo chown $(id -un):$(id -gn) ~/.kube/config
 	kubectl get pods --all-namespaces
 
