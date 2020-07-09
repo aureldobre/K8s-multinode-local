@@ -1,6 +1,6 @@
 # K8s-multinode-local
 
-The purpose of this project is to create a Kubernetes cluster with one master and more nodes on a host.
+The purpose of this project is to create a Kubernetes cluster with one master and more nodes on the local host.
 All the nodes are created as VM. Using Vagrant and ansible the project get more structure and is easy to use.
 
 The code was adapted from the article: (https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant) for my Mac Pro.
